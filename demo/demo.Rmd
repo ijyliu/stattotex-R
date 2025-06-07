@@ -1,0 +1,85 @@
+---
+title: "demo"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{demo}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## In R
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This file demonstrates how to use the stattotex package.
+
+First, we install and set up the package from GitHub.
+
+```{r setup, message=FALSE}
+library(devtools)
+devtools::install_github("ijyliu/stattotex-R")
+library(stattotex)
+```
+
+Suppose we had some calculated statistic/variable. For example, we could compute average monthly sales for a product over the previous quarter. Suppose that this statistic takes on the value of 2,532.01 units.
+
+```{r}
+number <- 2532.01
+```
+
+Let us now save this number to the file "demoNums.tex" with the name "AvgMonthlySales". We can use the setting clear_file=TRUE to delete the file before writing to it.
+
+```{r}
+stattotex(variable_name="AvgMonthlySales", 
+          variable_value=number, 
+          filename="demoNums.tex", 
+          clear_file=TRUE)
+```
+
+Let's say we wish to format this as 2,532.01. We can directly format the number as a string, and feed strings to stattotex.
+
+```{r}
+f_number <- formatC(number, format = "f", digits = 2, big.mark = ",")
+```
+
+This function call will update the value of the number for LaTeX.
+
+```{r}
+stattotex("AvgMonthlySales", f_number, "demoNums.tex")
+```
+
+stattotex will accept arbitrary string inputs. Let's say our sales increased by 100.3% from the previous quarter
+
+```{r}
+pct <- 100.3
+pct_string <- paste0(as.character(pct), "%")
+stattotex("SaleIncPct", pct_string, "demoNums.tex")
+```
+
+and we want to say that the sales increased/decreased/stayed the same based on the percentage
+
+```{r}
+if (pct > 0.0) {
+  word <- "increased"
+} else if (pct == 0.0) {
+  word <- "stayed the same"
+} else {
+  word <- "decreased"
+}
+stattotex("SaleDir", word, "demoNums.tex")
+```
+
+## In LaTeX
+
+We can now compile a document making use of these numbers
+
+```{r}
+install.packages('tinytex', repos = "https://cloud.r-project.org")
+tinytex::install_tinytex()
+tinytex::pdflatex('Demo Report.tex')
+```

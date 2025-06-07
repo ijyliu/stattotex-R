@@ -1,0 +1,24 @@
+% Demo Report.tex
+% This is a minimal LaTeX document demonstrating the use of variables saved by stattotex
+
+\documentclass{article}
+
+% Add demoNums.tex as input
+% This will add the variables as commands
+\input{demoNums.tex}
+
+\begin{document}
+
+    This is a demonstation of the stattotex package.
+
+    % Variables can be imported using the \ and then the name
+    Import of a formatted number: \AvgMonthlySales
+
+    Import of a percentage: \SaleIncPct
+
+    Import of a word: \SaleDir
+
+    % Adding \space may be helpful in correcting spacing
+    Sample paragraph: Every month last quarter, we sold an average of \AvgMonthlySales \space units. This is a \SaleIncPct \space change relative to the prior quarter, meaning our revenue significantly \SaleDir.
+
+\end{document}
