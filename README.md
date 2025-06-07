@@ -15,7 +15,7 @@ devtools::install_github("ijyliu/stattotex-R")
 
 ## Usage
 
-For examples, see the [demo](https://github.com/ijyliu/stattotex-R/tree/main/demo) folder. A summary is below:
+For examples, see [demo/demo.pdf](). A summary is below:
 
 In R, import the function with
 
