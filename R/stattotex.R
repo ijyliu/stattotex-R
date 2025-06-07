@@ -8,15 +8,40 @@
 #' @examples
 #' \dontrun{stattotex("AvgMonthlySales", 1500, "demo/demoNums.tex")}
 #' @export
-stattotex <- function(number, number_name, filename) {
+stattotex <- function(variable_name, variable_value, filename, clear_file = FALSE) {
 
-  # Paste together command
-  command <- paste0("\\newcommand{\\", number_name, "}{", number, "}")
+  # Convert variable_value to character
+  # Escape the '%' character for LaTeX
+  variable_value <- gsub("%", "\\\\%", as.character(variable_value))
 
-  # Make directory needed for file if it doesn't exist
-  dir.create(dirname(filename), showWarnings = FALSE, recursive = TRUE)
+  # Throw an error if variable_name contains an underscore
+  if (grepl("_", variable_name, fixed = TRUE)) {
+    stop("variable_name cannot contain an underscore. LaTeX does not allow this.")
+  }
 
-  # Write to file
-  cat(command, sep = "\n", file = filename, append = TRUE)
+  # Delete the file if clear_file is TRUE
+  if (clear_file && file.exists(filename)) {
+    file.remove(filename)
+  }
 
+  # Determine whether to use \\newcommand or \\renewcommand
+  command_string <- paste0("\\newcommand{\\", variable_name, "}")
+  use_renew <- FALSE
+  # Existing file with string - use \\renewcommand
+  if (file.exists(filename)) {
+    lines <- readLines(filename, warn = FALSE)
+    if (any(grepl(command_string, lines, fixed = TRUE))) {
+      use_renew <- TRUE
+    }
+  }
+  
+  # Construct the LaTeX command
+  command <- if (use_renew) {
+    paste0("\\renewcommand{\\", variable_name, "}{", variable_value, "}")
+  } else {
+    paste0(command_string, "{", variable_value, "}")
+  }
+
+  # Write the command to the file
+  cat(command, "\n", file = filename, append = TRUE)
 }
