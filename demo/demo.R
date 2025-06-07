@@ -9,6 +9,8 @@
 library(devtools)
 devtools::install_github("ijyliu/stattotex-R")
 library(stattotex)
+# The below package is a dependency for compiling LaTeX documents within R (optional).
+library(tinytex)
 # If "demo" is a subdirect, change into it
 if (basename(getwd()) != "demo") {
   setwd("demo")
@@ -54,7 +56,6 @@ stattotex("SaleDir", word, "demoNums.tex")
 # We can now compile a document making use of these numbers. 
 # I am doing this in R for convenience, but you can also do this directly via other means.
 # Check out the `Demo Report.tex` file in this folder, and the associated `Demo Report.pdf` created.
-install.packages('tinytex', repos = "https://cloud.r-project.org")
 if (!tinytex::is_tinytex()) {
   tinytex::install_tinytex() 
 }
