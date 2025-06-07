@@ -1,0 +1,18 @@
+Package: stattotex
+Type: Package
+Title: A simple function for automatically updating LaTeX documents with numbers or strings from R
+Version: 0.1.0
+Authors@R: c(
+    person(
+      "Isaac", "Liu",
+      email = "ijyliu@gmail.com",
+      role = c("aut", "cre")
+    )
+  )
+Description: A simple function for automatically updating LaTeX documents with numbers or strings from Python. 
+  No more manually copying your calculations over every time your code is re-run!
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
