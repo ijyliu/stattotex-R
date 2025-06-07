@@ -1,6 +1,6 @@
 Package: stattotex
 Type: Package
-Title: A simple function for automatically updating LaTeX documents with numbers or strings from R
+Title: Automatically updating LaTeX documents with numbers or strings from R
 Version: 0.1.0
 Authors@R: c(
     person(
@@ -9,7 +9,7 @@ Authors@R: c(
       role = c("aut", "cre")
     )
   )
-Description: A simple function for automatically updating LaTeX documents with numbers or strings from Python. 
+Description: A simple function for automatically updating LaTeX documents with numbers or strings from R. 
   No more manually copying your calculations over every time your code is re-run!
 License: MIT + file LICENSE
 Encoding: UTF-8
