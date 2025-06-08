@@ -5,9 +5,7 @@
 
 # In R
 
-# First, we install and set up the package from GitHub.
-library(devtools)
-devtools::install_github("ijyliu/stattotex-R")
+# Load the stattotex package
 library(stattotex)
 # The below package is a dependency for compiling LaTeX documents within R (optional).
 library(tinytex)
