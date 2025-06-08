@@ -4,18 +4,23 @@
 \alias{stattotex}
 \title{stattotex}
 \usage{
-stattotex(number, number_name, filename)
+stattotex(variable_name, variable_value, filename, clear_file = FALSE)
 }
 \arguments{
-\item{number}{A numeric value to be saved.}
+\item{variable_name}{Name of the variable to be saved (string)}
 
-\item{number_name}{A string representing the name/command to be associated with the number.}
+\item{variable_value}{Value of the variable to be saved}
 
-\item{filename}{The name of the file where the LaTeX command will be saved.}
+\item{filename}{Name of the file to save the variable to (string)}
+
+\item{clear_file}{If TRUE, clears the contents of the file before writing (default is FALSE)}
 }
 \description{
-Function that takes number and associated name from R and saves into a file that allows for easy-read-in and later formatting in LaTeX
+Function that takes a variable value and associated name from R and saves into a file that allows for easy-read-in and later formatting in LaTeX
 }
 \examples{
-\dontrun{stattotex("AvgMonthlySales", 1500, "demo/demoNums.tex")}
+\dontrun{stattotex(variable_name = "AvgMonthlySales", 
+                   variable_value = 1500, 
+                   filename = "demo/demoNums.tex", 
+                   clear_file = FALSE)}
 }

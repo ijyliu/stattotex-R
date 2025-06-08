@@ -1,12 +1,16 @@
 #' stattotex
 #'
-#' Function that takes number and associated name from R and saves into a file that allows for easy-read-in and later formatting in LaTeX
+#' Function that takes a variable value and associated name from R and saves into a file that allows for easy-read-in and later formatting in LaTeX
 #'
-#' @param number A numeric value to be saved.
-#' @param number_name A string representing the name/command to be associated with the number.
-#' @param filename The name of the file where the LaTeX command will be saved.
+#' @param variable_name Name of the variable to be saved (string)
+#' @param variable_value Value of the variable to be saved
+#' @param filename Name of the file to save the variable to (string)
+#' @param clear_file If TRUE, clears the contents of the file before writing (default is FALSE)
 #' @examples
-#' \dontrun{stattotex("AvgMonthlySales", 1500, "demo/demoNums.tex")}
+#' \dontrun{stattotex(variable_name = "AvgMonthlySales", 
+#'                    variable_value = 1500, 
+#'                    filename = "demo/demoNums.tex", 
+#'                    clear_file = FALSE)}
 #' @export
 stattotex <- function(variable_name, variable_value, filename, clear_file = FALSE) {
 

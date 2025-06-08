@@ -54,7 +54,7 @@ stattotex("SaleDir", word, "demoNums.tex")
 # We can now compile a document making use of these numbers. 
 # I am doing this in R for convenience, but you can also do this directly via other means.
 # Check out the `Demo Report.tex` file in this folder, and the associated `Demo Report.pdf` created.
-if (!tinytex::is_tinytex()) {
-  tinytex::install_tinytex() 
+if (!is_tinytex()) {
+  install_tinytex() 
 }
-tinytex::pdflatex('Demo Report.tex')
+pdflatex('Demo Report.tex')
